@@ -1,0 +1,77 @@
+
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Laporan Kerja Teknisi</title>
+<style>
+*{box-sizing:border-box}
+body{margin:0;background:#f1f5f9;font-family:Arial,sans-serif;color:#172033}
+header{background:#14532d;color:white;padding:22px 18px}
+header h1{font-size:23px;margin:0 0 8px}
+header p{margin:0;font-size:14px}
+main{max-width:560px;margin:20px auto;padding:0 14px}
+form,.notice{background:white;border-radius:14px;padding:20px;box-shadow:0 3px 12px #0000000d}
+label{display:block;font-weight:bold;font-size:14px;margin:16px 0 7px}
+input,select,textarea{width:100%;padding:12px;border:1px solid #cbd5e1;border-radius:8px;font-size:16px;background:white}
+textarea{min-height:90px;resize:vertical}
+button{width:100%;border:0;border-radius:9px;padding:14px;background:#15803d;color:white;font-size:16px;font-weight:bold;margin-top:20px}
+button:disabled{opacity:.5}
+.small{font-size:12px;color:#64748b;line-height:1.5}
+.notice{margin-bottom:14px;font-size:13px;line-height:1.5}
+</style>
+</head>
+<body>
+<header>
+<h1>Laporan Kerja Teknisi</h1>
+<p>Form laporan pekerjaan dan dokumentasi foto site</p>
+</header>
+<main>
+<div class="notice">
+Isi data sesuai pekerjaan sebenarnya. Unggah satu foto bukti pekerjaan.
+</div>
+<form id="reportForm">
+<label for="teknisi">Nama teknisi *</label>
+<input id="teknisi" name="teknisi" required placeholder="Nama lengkap">
+
+<label for="tanggal">Tanggal pekerjaan *</label>
+<input id="tanggal" name="tanggal" type="date" required>
+
+<label for="siteid">Site ID *</label>
+<input id="siteid" name="siteid" required placeholder="Contoh: 16SBY0023">
+
+<label for="site">Nama site *</label>
+<input id="site" name="site" required placeholder="Nama lokasi site">
+
+<label for="aktivitas">Aktivitas pekerjaan *</label>
+<select id="aktivitas" name="aktivitas" required>
+<option value="">Pilih aktivitas</option>
+<option>Instalasi</option>
+<option>Troubleshooting</option>
+<option>Preventive Maintenance</option>
+<option>Integrasi</option>
+<option>Survey</option>
+<option>Lainnya</option>
+</select>
+
+<label for="keterangan">Keterangan pekerjaan *</label>
+<textarea id="keterangan" name="keterangan" required placeholder="Jelaskan pekerjaan dan hasilnya"></textarea>
+
+<label for="foto">Foto bukti pekerjaan *</label>
+<input id="foto" name="foto" type="file" accept="image/*" capture="environment" required>
+<p class="small">Pilih satu foto. Gunakan foto dokumentasi pekerjaan yang benar.</p>
+
+<button type="submit">Kirim Laporan</button>
+<p id="status" class="small" role="status"></p>
+</form>
+</main>
+<script>
+document.getElementById("reportForm").addEventListener("submit",function(e){
+ e.preventDefault();
+ document.getElementById("status").textContent =
+ "Form sudah siap. Pengiriman belum diaktifkan; backend Google Sheets dan Drive perlu dihubungkan terlebih dahulu.";
+});
+</script>
+</body>
+</html>
